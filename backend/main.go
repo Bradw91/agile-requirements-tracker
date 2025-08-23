@@ -26,12 +26,6 @@ func main() {
 
 	router := gin.Default()
 
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "Hello, World!",
-		})
-	})
-
 	setupWorkItemRoutes(router, db)
 
 	// Call setupWorkItemRoutes if needed, e.g. setupWorkItemRoutes(router)
