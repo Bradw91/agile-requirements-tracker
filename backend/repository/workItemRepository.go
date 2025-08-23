@@ -18,14 +18,51 @@ type workItemRepository struct {
 
 // CreateWorkItem inserts a new work item into the database.
 func (r *workItemRepository) CreateWorkItem(item *models.WorkItem) error {
-	// TODO: Implement database insert logic here
+	query := `
+INSERT INTO work_items (
+    title, description, type, parent_id, status,
+    tshirt_size, acceptance_criteria, story_points, business_value,
+    resolution, incident_number,
+    expected_result, input_data, setup_steps, actual_result
+) VALUES (
+    :title, :description, :type, :parent_id, :status,
+    :tshirt_size, :acceptance_criteria, :story_points, :business_value,
+    :resolution, :incident_number,
+    :expected_result, :input_data, :setup_steps, :actual_result
+)
+RETURNING id, created_at, updated_at
+	`
+	row, err := r.db.NamedQuery(query, item)
+	if err != nil {
+		return err
+	}
+	defer row.Close()
+
+	if row.Next() {
+		return row.Scan(&item.ID, &item.CreatedAt, &item.UpdatedAt)
+	}
+
 	return nil
 }
 
 // GetWorkItems retrieves all work items from the database.
 func (r *workItemRepository) GetWorkItems() ([]models.WorkItem, error) {
-	// TODO: Implement database select logic here
-	return []models.WorkItem{}, nil
+	items := []models.WorkItem{}
+
+	query := `
+	SELECT
+		id, title, description, type, parent_id, status,
+		tshirt_size, acceptance_criteria, story_points, business_value,
+		resolution, incident_number,
+		expected_result, input_data, setup_steps, actual_result,
+		created_at, updated_at
+	FROM work_items
+	`
+	err := r.db.Select(&items, query)
+	if err != nil {
+		return nil, err
+	}
+	return items, nil
 }
 
 // UpdateWorkItem updates an existing work item in the database.
