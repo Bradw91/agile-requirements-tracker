@@ -1,4 +1,9 @@
+// models/models.go
 package models
+
+import (
+	"time"
+)
 
 type WorkItemType string
 
@@ -15,7 +20,7 @@ type WorkItem struct {
 	Title       string       `json:"title" db:"title"`
 	Description *string      `json:"description" db:"description"`
 	Type        WorkItemType `json:"type" db:"type"`
-	Owner       *[]User      `json:"owner" db:"-"`
+	Owner       *[]User      `json:"owner,omitempty" db:"-"`
 	ParentID    *string      `json:"parent_id,omitempty" db:"parent_id"`
 	Status      *string      `json:"status" db:"status"`
 
@@ -28,7 +33,7 @@ type WorkItem struct {
 	// UserStory
 	StoryPoints   *int          `json:"story_points,omitempty" db:"story_points"`
 	BusinessValue *int          `json:"business_value,omitempty" db:"business_value"`
-	Attachments   *[]Attachment `json:"attachments,omitempty" db:"attachments"`
+	Attachments   *[]Attachment `json:"attachments,omitempty" db:"-"`
 
 	// Defect
 	Resolution     *string `json:"resolution,omitempty" db:"resolution"`
@@ -39,4 +44,17 @@ type WorkItem struct {
 	InputData      *string `json:"input_data,omitempty" db:"input_data"`
 	SetupSteps     *string `json:"setup_steps,omitempty" db:"setup_steps"`
 	ActualResult   *string `json:"actual_result,omitempty" db:"actual_result"`
+
+	// Timestamps
+	CreatedAt time.Time `json:"created_at" db:"created_at"`
+	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
+}
+
+// WorkItemWithRelations includes all related data in a single query
+type WorkItemWithRelations struct {
+	WorkItem
+	Parent      *WorkItem    `json:"parent,omitempty"`
+	Children    []WorkItem   `json:"children,omitempty"`
+	Owners      []User       `json:"owners,omitempty"`
+	Attachments []Attachment `json:"attachments,omitempty"`
 }

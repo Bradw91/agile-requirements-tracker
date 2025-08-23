@@ -17,23 +17,23 @@ type workItemService struct {
 }
 
 // CreateWorkItem implements WorkItemServiceInterface.
-func (w *workItemService) CreateWorkItem(*models.WorkItem) error {
-	panic("unimplemented")
+func (s *workItemService) CreateWorkItem(item *models.WorkItem) error {
+	return s.repo.CreateWorkItem(item)
 }
 
 // DeleteWorkItem implements WorkItemServiceInterface.
-func (w *workItemService) DeleteWorkItem(id string) error {
-	panic("unimplemented")
+func (s *workItemService) DeleteWorkItem(id string) error {
+	return s.repo.DeleteWorkItem(id)
 }
 
 // GetWorkItems implements WorkItemServiceInterface.
-func (w *workItemService) GetWorkItems() ([]models.WorkItem, error) {
-	panic("unimplemented")
+func (s *workItemService) GetWorkItems() ([]models.WorkItem, error) {
+	return s.repo.GetWorkItems()
 }
 
 // UpdateWorkItem implements WorkItemServiceInterface.
-func (w *workItemService) UpdateWorkItem(id string, item *models.WorkItem) error {
-	panic("unimplemented")
+func (s *workItemService) UpdateWorkItem(id string, item *models.WorkItem) error {
+	return s.repo.UpdateWorkItem(id, item)
 }
 
 func NewWorkItemService(repo repository.WorkItemRepository) WorkItemService {

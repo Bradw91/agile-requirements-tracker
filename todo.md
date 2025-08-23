@@ -1,6 +1,9 @@
 ## TODO
 
-- Implement workItem model
-- Implement workItem service
-- Implement workItem handler
-- Implement workItem repository
+- Set up database connection (postgres with docker)
+- set up queries in repository
+- implement service methods
+- Test basic endpoints
+
+
+
