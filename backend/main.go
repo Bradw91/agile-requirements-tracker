@@ -13,21 +13,13 @@ func main() {
 		})
 	})
 
-	// Group Routes
-	workItemsApi := router.Group("/api/v1/workItems")
+	// Define API group for work items
+	workItemsApi := router.Group("/api/workitems")
 	{
-		workItemsApi.GET("/", getWorkItems)
-		workItemsApi.POST("/", createWorkItem)
-		workItemsApi.PUT("/:id", updateWorkItem)
-		workItemsApi.DELETE("/:id", deleteWorkItem)
-	}
-
-	userApi := router.Group("/api/v1/users")
-	{
-		userApi.GET("/", getUsers)
-		userApi.POST("/", createUser)
-		userApi.PUT("/:id", updateUser)
-		userApi.DELETE("/:id", deleteUser)
+		workItemsApi.GET("/", workItemHandler.GetWorkItems)
+		workItemsApi.POST("/", workItemHandler.CreateWorkItem)
+		workItemsApi.PUT("/:id", workItemHandler.UpdateWorkItem)
+		workItemsApi.DELETE("/:id", workItemHandler.DeleteWorkItem)
 	}
 
 	router.Run(":8080")
