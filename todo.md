@@ -1,13 +1,12 @@
 ## TODO
 
 Backend
-- set up queries in repository - partially done
-- implement service methods - in progress
-- Test basic endpoints - done for GET and POST work items
+- [x] set up queries in repository - partially done
+- [ ] implement service methods - in progress
+- [x] Test basic endpoints - done for GET and POST work items
 
 
 
 Frontend
- - Set up Typescript react project with Tailwind CSS
- - Implement basic layout and components
- - Connect frontend to backend API
+ - [ ] Implement basic layout and components
+ - [ ] Connect frontend to backend API
