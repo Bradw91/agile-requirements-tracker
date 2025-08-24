@@ -1,6 +1,9 @@
 import React from "react";
+import { UserStoryCard } from "./UserStoryCard";
 
 const ScrumBoard: React.FC = () => {
+
+
   return (
     <div>
       <h2>Scrum Board</h2>

@@ -1,12 +1,12 @@
 import "./index.css";
 import Header from "./components/Header/Header";
-import UserStoryCard from "./components/WorkItemManagement/UserStoryCard";
+import ScrumBoard from "./components/WorkItemManagement/ScrumBoard";
 
 function App() {
   return (
     <>
       <Header />
-      <UserStoryCard />
+      <ScrumBoard />
     </>
   );
 }
