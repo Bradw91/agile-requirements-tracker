@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface UserStory {
+export interface Task {
   id: string;
   title: string;
   description: string;
@@ -14,9 +14,10 @@ export interface UserStory {
     | "Failed UAT Testing"
     | "Ready for MTP"
     | "done";
+  type: "User Story" | "Defect" | "Spike";
 }
 
-const UserStoryCard: React.FC<{ story: UserStory }> = ({ story }) => {
+const TaskCard: React.FC<{ task: Task }> = ({ task }) => {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "High":
@@ -32,34 +33,34 @@ const UserStoryCard: React.FC<{ story: UserStory }> = ({ story }) => {
   return (
     <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4 mb-3 hover:shadow-lg transition-shadow duration-200">
       <div className="flex justify-between items-start mb-2">
-        <span className="text-sm font-medium text-gray-600">{story.id}</span>
+        <span className="text-sm font-medium text-gray-600">{task.type}</span>
         <span
           className={`px-2 py-1 text-xs rounded-full ${getPriorityColor(
-            story.priority
+            task.priority
           )}`}
         >
-          {story.priority}
+          {task.priority}
         </span>
       </div>
 
       <h3 className="font-semibold text-gray-800 mb-2 text-sm leading-tight">
-        {story.title}
+        {task.title}
       </h3>
 
       <p className="text-xs text-gray-600 mb-3 line-clamp-2">
-        {story.description}
+        {task.description}
       </p>
 
       <div className="flex justify-between items-center text-xs">
         <div className="flex items-center space-x-2">
           <div className="bg-blue-100 text-blue-800 px-2 py-1 rounded">
-            {story.storyPoints} SP
+            {task.storyPoints} Points
           </div>
         </div>
-        <div className="text-gray-600 truncate max-w-20">{story.assignee}</div>
+        <div className="text-gray-600 truncate max-w-20">{task.assignee}</div>
       </div>
     </div>
   );
 };
 
-export default UserStoryCard;
+export default TaskCard;
