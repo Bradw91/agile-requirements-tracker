@@ -5,8 +5,12 @@ import ScrumBoard from "./components/WorkItemManagement/ScrumBoard";
 function App() {
   return (
     <>
-      <Header />
-      <ScrumBoard />
+      <div className="pb-50">
+        <Header />
+      </div>
+      <div className="ml-40 mr-40  bg-creamWhite p-10 h-auto place-content-center pl-20 pr-20">
+        <ScrumBoard />
+      </div>
     </>
   );
 }

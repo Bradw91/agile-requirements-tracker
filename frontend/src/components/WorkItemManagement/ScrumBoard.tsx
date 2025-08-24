@@ -84,8 +84,6 @@ const ScrumBoard: React.FC = () => {
 
   return (
     <div>
-      <h2>Scrum Board</h2>
-      <p>List of user stories in the current sprint.</p>
       <div className="grid grid-cols-3 gap-4">
         {columns.map((column) => (
           <div key={column.title} className={`p-4 rounded ${column.bgColor}`}>
