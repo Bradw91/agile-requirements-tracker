@@ -97,10 +97,10 @@ const ScrumBoard: React.FC = () => {
               {column.tasks.map((task) => (
                 <TaskCard key={task.id} task={task} />
               ))}
+              <button className="w-full mt-4 py-2 px-4 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-[color:var(--color-forestGreen)] hover:text-[color:var(--color-forestGreen)] transition-colors duration-200 text-xs">
+                + Add Task
+              </button>
             </div>
-            <button className="w-full mt-4 py-2 px-4 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-[color:var(--color-forestGreen)] hover:text-[color:var(--color-forestGreen)] transition-colors duration-200 text-xs">
-              + Add Task
-            </button>
           </div>
         ))}
       </div>

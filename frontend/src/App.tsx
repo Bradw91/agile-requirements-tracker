@@ -8,7 +8,7 @@ function App() {
       <div className="pb-50">
         <Header />
       </div>
-      <div className="ml-40 mr-40  bg-creamWhite p-10 h-auto place-content-center pl-20 pr-20">
+      <div className="ml-40 mr-40 p-10 h-auto place-content-center pl-20 pr-20">
         <ScrumBoard />
       </div>
     </>

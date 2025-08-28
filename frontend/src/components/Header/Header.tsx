@@ -1,9 +1,24 @@
 import React from "react";
 import { FiSearch, FiBell, FiUser, FiSettings } from "react-icons/fi";
+import { useState } from "react";
+import UserOptions from "./UserOptions";
 
 const Header: React.FC = () => {
+  const [isUserOptionsOpen, setIsUserOptionsOpen] = useState(false);
+
+  const user = {
+    firstName: "Brad",
+    lastName: "Willard",
+    email: "brad.willard@test.com",
+    // profilePicture: "https://example.com/jane.jpg", // optional
+  };
+
+  const toggleUserOptions = () => {
+    setIsUserOptionsOpen(!isUserOptionsOpen);
+  };
+
   return (
-    <header className="bg-creamWhite h-16 flex items-center px-6 shadow-md">
+    <header className=" h-16 bg-white flex items-center px-6 shadow-md">
       {/* Logo */}
       <div className="text-forestGreen font-bold text-xl">Agi</div>
 
@@ -23,7 +38,11 @@ const Header: React.FC = () => {
       <div className="flex items-center space-x-4 text-forestGreen">
         <FiBell className="w-6 h-6 cursor-pointer" />
         <FiSettings className="w-6 h-6 cursor-pointer" />
-        <FiUser className="w-6 h-6 cursor-pointer" />
+        <FiUser
+          className="w-6 h-6 cursor-pointer"
+          onClick={toggleUserOptions}
+        />
+        <UserOptions isOpen={isUserOptionsOpen} user={user} />
       </div>
     </header>
   );
